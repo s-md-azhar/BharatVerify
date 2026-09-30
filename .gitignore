@@ -1,0 +1,56 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+.venv
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Environment Variables
+.env
+.env.*
+!.env.example
+
+# JS/React
+node_modules/
+dist/
+.DS_Store
+build/
+
+# ML / Models / Data
+model_artifacts/*
+!model_artifacts/.gitkeep
+datasets/synthetic/*.json
+datasets/synthetic/*.csv
+datasets/benchmark/*.json
+datasets/benchmark/*.csv
+uploads/
+
+# IDEs
+.idea/
+.vscode/
+*.swp
