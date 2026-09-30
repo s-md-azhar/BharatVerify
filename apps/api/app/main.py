@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import settings
+from app.api import cases
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
@@ -26,5 +27,4 @@ def ready_check():
     # To be extended with DB and model readiness checks
     return {"status": "ready"}
 
-# Include routers here later
-# app.include_router(cases.router, prefix=f"{settings.API_V1_STR}/cases", tags=["cases"])
+app.include_router(cases.router, prefix=f"{settings.API_V1_STR}/cases", tags=["cases"])

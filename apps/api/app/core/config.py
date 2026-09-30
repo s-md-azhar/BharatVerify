@@ -10,7 +10,7 @@ class Settings(BaseSettings):
     GEMINI_API_KEY: Optional[str] = None
     
     # Database
-    DATABASE_URL: str = "postgresql://postgres:postgres@localhost:5432/bharatverify"
+    DATABASE_URL: str
     
     # CORS
     FRONTEND_URL: str = "http://localhost:5173"
@@ -18,6 +18,6 @@ class Settings(BaseSettings):
     # ML settings
     EMBEDDING_DEVICE: str = "auto"
     
-    model_config = SettingsConfigDict(env_file=".env", env_ignore_empty=True, extra="ignore")
+    model_config = SettingsConfigDict(env_file="../../.env", env_ignore_empty=True, extra="ignore")
 
 settings = Settings()
