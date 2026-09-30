@@ -2,12 +2,13 @@ import os
 import torch
 from typing import List
 from sentence_transformers import SentenceTransformer
+from app.core.config import settings
 
 class EmbedderService:
     _instance = None
     
     def __init__(self, model_name: str = "BAAI/bge-m3"):
-        self.device = os.getenv("EMBEDDING_DEVICE", "cpu")
+        self.device = settings.EMBEDDING_DEVICE
         if self.device == "auto":
             self.device = "cuda" if torch.cuda.is_available() else "cpu"
             
@@ -22,7 +23,7 @@ class EmbedderService:
         if cls._instance is None:
             # Fallback to paraphrase-multilingual-MiniLM-L12-v2 if BGE-M3 is causing OOM in demo. 
             # We'll try BGE-M3 first but can be overridden.
-            model_name = os.getenv("EMBEDDING_MODEL", "BAAI/bge-m3")
+            model_name = settings.EMBEDDING_MODEL
             cls._instance = cls(model_name)
         return cls._instance
 

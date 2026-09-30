@@ -2,9 +2,14 @@ services:
   - type: web
     name: bharatverify-api
     env: python
-    buildCommand: "pip install -r requirements.txt && python scripts/run_migrations.py"
+    buildCommand: "pip install -r requirements.txt"
+    preDeployCommand: "alembic upgrade head"
     startCommand: "uvicorn apps.api.app.main:app --host 0.0.0.0 --port $PORT"
     envVars:
+      - key: PYTHONPATH
+        value: .
+      - key: FRONTEND_URL
+        value: "https://bharatverify.onrender.com"
       - key: GEMINI_API_KEY
         sync: false
       - key: DATABASE_URL
@@ -14,7 +19,7 @@ services:
       - key: ENVIRONMENT
         value: production
       - key: EMBEDDING_MODEL
-        value: bge-m3
+        value: BAAI/bge-m3
 
 databases:
   - name: bharatverify-db

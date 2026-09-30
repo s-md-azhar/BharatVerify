@@ -17,6 +17,7 @@ class Settings(BaseSettings):
     
     # ML settings
     EMBEDDING_DEVICE: str = "auto"
+    EMBEDDING_MODEL: str = "BAAI/bge-m3"
     
     model_config = SettingsConfigDict(env_file="../../.env", env_ignore_empty=True, extra="ignore")
 
